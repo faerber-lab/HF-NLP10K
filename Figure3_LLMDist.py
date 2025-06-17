@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-def plot_nlp_model_download_distribution(csv_file='CMA-PROJ_Dataset.csv'):
+def plot_nlp_model_download_distribution(csv_file='HLT-NLP10K.csv.gz'):
     # Load data with correct column names
     df = pd.read_csv(csv_file, usecols=['Model ID', 'Downloads', 'Likes'])
 
