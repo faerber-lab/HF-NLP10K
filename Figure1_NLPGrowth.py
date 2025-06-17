@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.dates as mdates
 
-def plot_llm_growth(csv_file='Data-Stats.csv', save_file='Picture1.pdf'):
+def plot_llm_growth(csv_file='Data-Stats.csv.gz.csv', save_file='Picture1.pdf'):
     # Load data
     df = pd.read_csv(csv_file, usecols=['created_at'])
     df['created_at'] = pd.to_datetime(df['created_at'], errors='coerce')
