@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Define file paths
-input_file = "S7-CombineCols-CompleteDataset.csv"  # Update if needed
-output_file = "S8-FinalDataset.csv"  # File to save unique models
+input_file = "S7-CombineCols-CompleteDataset.csv"
+output_file = "HLT-NLP10K.csv.gz"  # Final dataset file name
 
 try:
     # Load the dataset
@@ -13,8 +13,8 @@ try:
         # Drop duplicate Model IDs, keeping the first occurrence
         unique_df = df.drop_duplicates(subset=["Model ID"], keep="first")
 
-        # Save to a new CSV file
-        unique_df.to_csv(output_file, index=False)
+        # Save to a compressed CSV file
+        unique_df.to_csv(output_file, index=False, compression="gzip")
 
         print(f"Saved {len(unique_df)} unique rows to {output_file}")
     else:
