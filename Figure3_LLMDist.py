@@ -24,44 +24,58 @@ def plot_nlp_model_download_distribution(csv_file='CMA-PROJ_Dataset.csv'):
     top_80_percent = df[df['cumulative_percentage'] <= 80]
     num_top_80 = len(top_80_percent)
 
-    # Set seaborn style for cleaner background
+    # Seaborn style
     sns.set_style("whitegrid")
 
     # Plot
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 8))
     plt.loglog(df['rank'], df['Downloads'], 'bo', markersize=4, label='NLP Models', alpha=0.7)
 
-    # Annotate 80% threshold
-    plt.text(df['rank'].iloc[int(len(df) * 0.25)],
-             max(df['Downloads']) * 0.3,
-             f'Top {num_top_80} models account for 80% of downloads.',
-             bbox=dict(facecolor='white', alpha=0.7),
-             fontsize=16, ha='center')
+    # Get top models to annotate
+    top_models = df.head(4)
 
-    # Annotate top few models
-    top_models = df.head(4)  
-    y_offsets = np.linspace(10, -10, len(top_models))  
-    x_offsets = np.linspace(-25, 45, len(top_models))  
+    # Custom annotation positions (adjusted to move boxes lower)
+    annotation_positions = [
+        (2.0, 1.13),  # FacebookAI/xlm-roberta-large
+        (5.0, 0.5),   # sentence-transformers/all-MiniLM-L6-v2
+        (3.5, 0.3),   # google-bert/bert-base-uncased
+        (1.5, 0.2),   # sentence-transformers/all-mpnet-base-v2
+    ]
+
+    arrowprops = dict(arrowstyle="->", color='black', lw=1.5)
 
     for i, (_, row) in enumerate(top_models.iterrows()):
-        plt.annotate(row['Model ID'], (row['rank'], row['Downloads']),
-                     textcoords="offset points", xytext=(x_offsets[i], y_offsets[i]),
-                     ha='left', fontsize=14, color='blue')
+        dx, dy = annotation_positions[i]
+        # Position of annotation text
+        xy_text = (row['rank'] * dx, row['Downloads'] * dy)
+        plt.annotate(
+            row['Model ID'],
+            xy=(row['rank'], row['Downloads']),
+            xytext=xy_text,
+            textcoords='data',
+            arrowprops=arrowprops,
+            fontsize=16,
+            color='black',
+            bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.3'),
+            ha='left', va='top'   # <-- This makes arrow start at top-left corner of box
+        )
 
-    # Labels and title
-    plt.xlabel('Model Downloads Rank', fontsize=26, fontweight='bold')
-    plt.ylabel('Downloads', fontsize=26, fontweight='bold')
+    # Axis labels
+    plt.xlabel('Model Downloads Rank', fontsize=28, fontweight='bold')
+    plt.ylabel('Downloads', fontsize=28, fontweight='bold')
 
-    plt.legend(fontsize=18)
-    plt.xticks(fontsize=18)
-    plt.yticks(fontsize=18)
+    # Tick sizes
+    plt.xticks(fontsize=22)
+    plt.yticks(fontsize=22)
+
+    plt.legend(fontsize=20, loc='lower left')
     plt.grid(True, which='major', linestyle='--', alpha=0.4)
     plt.grid(True, which='minor', linestyle=':', alpha=0.2)
 
-    # Make box boundary black and thicker
+    # Thicker black box
     ax = plt.gca()
     for spine in ax.spines.values():
-        spine.set_linewidth(1.5)
+        spine.set_linewidth(1.8)
         spine.set_color('black')
 
     plt.tight_layout()
