@@ -26,9 +26,11 @@ This repository includes:
 |------|-------------|
 | `CMA-PROJ_Dataset.csv.gz` | Final structured dataset of 10,022 NLP models |
 | `S1-All_NLP.csv.gz` | Raw model metadata from Hugging Face API |
+| `InitialDataAnalysis_1.json`, `InitialDataAnalysis_2.json`, `Data-Stats.csv` | Initial extracted data files used for reproducibility and exploratory analysis |
 | `S1-All_NLP_Models.py` to `S8-UniqueRows_FinalDataset.py` | Scripts for dataset construction pipeline |
 | `Figure1_NLPGrowth.py` to `Figure5_MissingSections.py` | Scripts to generate figures from the paper |
 | `README.md` | Overview and usage instructions |
+
 
 ---
 
