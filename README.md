@@ -15,8 +15,8 @@ Hugging Face has become a central platform for sharing NLP models. However, inco
 This repository includes:
 
 - 📦 The HF-NLP10K dataset (`CMA-PROJ_Dataset.csv.gz`)
-- 🛠 Scripts for generating the initial dataset (InitialDataAnalysis_1.py, InitialDataAnalysis_2.py)
-- 📂 Initial extracted dataset (Data-Stats.csv.gz)
+- 🛠 Scripts for generating the initial dataset (`InitialDataAnalysis_1.py`, `InitialDataAnalysis_2.py`)
+- 📂 Initial extracted dataset (`Data-Stats.csv.gz`)
 - 📜 Scripts for dataset creation (steps S1-S8)
 - 📊 Python scripts for generating figures used in the paper
 
