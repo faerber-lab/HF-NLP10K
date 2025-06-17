@@ -4,7 +4,7 @@ import numpy as np
 import seaborn as sns
 
 # Load dataset
-file_path = "CMA-PROJ_Dataset.csv"
+file_path = "HLT-NLP10K.csv.gz"
 df = pd.read_csv(file_path)
 
 # Rename column for better label on plot
