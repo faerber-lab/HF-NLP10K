@@ -8,7 +8,7 @@ input_json_files = [
     "Data-Stats_3.json",
     "Data-Stats_4.json"
 ]
-output_csv_file = "Data-Stats.csv"
+output_csv_file = "Data-Stats.csv.gz"
 
 # Define the fields to extract
 fields_to_extract = [
