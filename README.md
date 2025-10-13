@@ -2,7 +2,7 @@
 
 This repository contains the data, scripts, and figures accompanying the paper:
 
-**Batool, S. K., Jatowt, A., & Färber, M.**  
+
 *HF-NLP10K: A Dataset and Metadata Analysis of 10,000+ Hugging Face NLP Models*  
 (Under submission)
 
