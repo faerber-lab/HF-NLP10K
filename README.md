@@ -2,7 +2,6 @@
 
 This repository contains the data, scripts, and figures accompanying the paper:
 
-
 *HF-NLP10K: A Dataset and Metadata Analysis of 10,000+ Hugging Face NLP Models*  
 (Under submission)
 
@@ -10,48 +9,92 @@ This repository contains the data, scripts, and figures accompanying the paper:
 
 ## 🌍 Overview
 
-Hugging Face has become a central platform for sharing NLP models. However, inconsistent and incomplete metadata makes it difficult to find suitable models. In this project, we introduce **HF-NLP10K**, a structured dataset of over **10,000 NLP models** enriched with **33 metadata fields**, combining Hugging Face API data with LLM-based parsing of free-text model cards.
-
-This repository includes:
-
-- 📦 The HF-NLP10K dataset (`HLT-NLP10K.csv`)
-- 🛠 Scripts for generating the initial dataset (`InitialDataAnalysis_1.py`, `InitialDataAnalysis_2.py`)
-- 📂 Initial extracted dataset (`Data-Stats.csv.gz`)
-- 📜 Scripts for dataset creation (steps S1-S8)
-- 📊 Python scripts for generating figures used in the paper
+Hugging Face has become a central platform for sharing NLP models. However, inconsistent and incomplete metadata make it difficult to find suitable models.  
+**HF-NLP10K** introduces a structured dataset of over **10,000 NLP models** enriched with **33 metadata fields**, combining Hugging Face API data with **LLM-based parsing** of free-text model cards.
 
 ---
 
-## 📁 Contents
+## 📦 Repository Structure
 
-| File | Description |
-|------|-------------|
-| `HLT-NLP10K.csv` | Final structured dataset of 10,022 NLP models |
-| `S1-All_NLP.csv.gz` | Raw model metadata from Hugging Face API |
-| `InitialDataAnalysis_1.py`, `InitialDataAnalysis_2.py`, `Data-Stats.csv.gz` | Initial extracted data files used for reproducibility and exploratory analysis |
-| `S1-All_NLP_Models.py` to `S8-UniqueRows_FinalDataset.py` | Scripts for dataset construction pipeline |
-| `Figure1_NLPGrowth.py` to `Figure5_MissingSections.py` | Scripts to generate figures from the paper |
-| `README.md` | Overview and usage instructions |
+```
+data/
+├── raw/                 # Raw extracted data from Hugging Face API
+│   ├── Data-Stats.csv.gz
+│   └── S1-All_NLP.csv.gz
+└── final/               # Final structured dataset
+    └── HLT-NLP10K.csv
 
+src/
+├── preprocessing/       # Scripts for dataset construction (S1–S8)
+├── analysis/            # Exploratory data analysis scripts
+└── figures/             # Figure generation scripts (for paper visuals)
+
+outputs/
+└── figures/             # Generated figures and plots
+
+requirements.txt          # Python dependencies
+README.md                 # Overview and usage instructions
+```
 
 ---
 
 ## 🧪 Dataset Highlights
 
-- Covers **10,022** NLP models with at least 1,000 downloads
-- Extracted **33 metadata fields**, including:
+- Covers **10,022 NLP models** with at least 1,000 downloads
+- Includes **33 metadata fields**, such as:
   - Pipeline tag, license, training data, evaluation metrics, base model
   - Download counts, fine-tuning compatibility, model card sections (limitations, use cases, etc.)
-- Built using API enrichment and **LLM-based model card parsing**
+- Combines **API enrichment** with **LLM-based model card parsing**
 
 ---
 
 ## 🔧 Reproducing the Dataset
 
-Run the scripts in order from `S1` to `S8`:
+Run the scripts sequentially from `S1` to `S8`:
 
 ```bash
+cd src/preprocessing
+
 python S1-All_NLP_Models.py
 python S2-Filter_NLP_Models.py
 ...
 python S8-UniqueRows_FinalDataset.py
+```
+
+The final dataset (`HLT-NLP10K.csv`) will be available under `data/final/`.
+
+---
+
+## 📊 Figures
+
+The figures presented in the paper can be reproduced using:
+
+```bash
+cd src/figures
+python Figure1_NLPGrowth.py
+python Figure2_No.ofDownloads.py
+...
+python Figure5_MissingSections.py
+```
+
+Resulting images will be stored under `outputs/figures/`.
+
+---
+
+## ⚙️ Requirements
+
+Install dependencies before running the scripts:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🧩 Citation
+
+If you use this dataset or scripts, please cite:
+
+> *HF-NLP10K: A Dataset and Metadata Analysis of 10,000+ Hugging Face NLP Models. Under submission.*
+
+---
