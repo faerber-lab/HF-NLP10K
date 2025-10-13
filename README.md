@@ -14,7 +14,7 @@ Hugging Face has become a central platform for sharing NLP models. However, inco
 
 This repository includes:
 
-- 📦 The HF-NLP10K dataset (`CMA-PROJ_Dataset.csv.gz`)
+- 📦 The HF-NLP10K dataset (`HLT-NLP10K.csv`)
 - 🛠 Scripts for generating the initial dataset (`InitialDataAnalysis_1.py`, `InitialDataAnalysis_2.py`)
 - 📂 Initial extracted dataset (`Data-Stats.csv.gz`)
 - 📜 Scripts for dataset creation (steps S1-S8)
@@ -26,7 +26,7 @@ This repository includes:
 
 | File | Description |
 |------|-------------|
-| `CMA-PROJ_Dataset.csv.gz` | Final structured dataset of 10,022 NLP models |
+| `HLT-NLP10K.csv` | Final structured dataset of 10,022 NLP models |
 | `S1-All_NLP.csv.gz` | Raw model metadata from Hugging Face API |
 | `InitialDataAnalysis_1.py`, `InitialDataAnalysis_2.py`, `Data-Stats.csv.gz` | Initial extracted data files used for reproducibility and exploratory analysis |
 | `S1-All_NLP_Models.py` to `S8-UniqueRows_FinalDataset.py` | Scripts for dataset construction pipeline |
