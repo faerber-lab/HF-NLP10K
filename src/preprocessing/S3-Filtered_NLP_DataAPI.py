@@ -55,11 +55,11 @@ columns = [col for col in df_output.columns if col != "readme_content"] + ["read
 df_output = df_output[columns]
 
 # Save to CSV
-output_file = "huggingface_models_metadata.csv"  # Updated output filename
+output_file = "S3-Filtered_NLP_DataAPI.csv"  # Updated output filename
 df_output.to_csv(output_file, index=False)
 
 # Save skipped models for debugging
-skipped_csv_filename = "S3-Filtered_NLP_DataAPI.csv"
+skipped_csv_filename = "S3-Skipped_Models.csv"
 pd.DataFrame({"Skipped Models": skipped_models}).to_csv(skipped_csv_filename, index=False)
 
 print(f"\n✅ Saved metadata (including README content) of {len(df_output)} models to {output_file}")
